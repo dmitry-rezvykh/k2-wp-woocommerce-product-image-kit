@@ -17,20 +17,4 @@ function theme_enqueue_styles()
     }
 }
 
-add_action('after_setup_theme', 'remove_photoswipe_css', 11);
-function remove_photoswipe_css()
-{
-    remove_theme_support('wc-product-gallery-zoom');
-    remove_theme_support('wc-product-gallery-lightbox');
-    remove_theme_support('wc-product-gallery-slider');
-}
-
-add_action('wp_enqueue_scripts', 'dequeue_photoswipe_css', 999);
-function dequeue_photoswipe_css()
-{
-    wp_dequeue_style('photoswipe');
-    wp_dequeue_style('photoswipe-default-skin-css');
-
-    wp_dequeue_script('photoswipe-ui-default');
-    wp_dequeue_script('photoswipe');
-}
+require_once 'inc/_woo-product-image.php';
