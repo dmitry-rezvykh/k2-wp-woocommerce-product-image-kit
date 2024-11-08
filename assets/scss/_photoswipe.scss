@@ -1,0 +1,93 @@
+.pswp {
+    $pswp-thumbnail-size: 80px;
+    $pswp-ui-el-gap: 15px;
+    
+    --pswp-placeholder-bg: #{$white};
+    --pswp-icon-color: #{$body-color};
+    --pswp-error-text-color: #{$body-color};
+
+    &--custom-bg {
+        --pswp-bg: #{$white};
+    }
+
+    &__thumbnails-indicator {
+        position: absolute;
+        bottom: 2 * $pswp-ui-el-gap;
+        left: 50%;
+        transform: translate(-50%, 0);
+        overflow-x: scroll;
+        scrollbar-color: transparent;
+        scrollbar-width: none;
+
+        @media(max-width: 767.98px) {
+            bottom: $pswp-ui-el-gap;
+            width: calc(100% - 30px);
+        }
+
+        & + .pswp__caption  {
+            bottom: $pswp-thumbnail-size + 4 * $pswp-ui-el-gap;
+
+            @media(max-width: 767.98px) {
+                bottom: $pswp-thumbnail-size + 2 * $pswp-ui-el-gap;
+            }
+        }
+    }
+
+    & &__thumbnails-indicator.pswp__hide-on-close {
+        z-index: calc(var(--pswp-root-z-index) + 10);
+    }
+
+    &__thumbnails-indicator-wrapper {
+        display: grid;
+        grid: 1fr / auto-flow;
+        gap: 5px;
+        width: fit-content;
+    }
+
+    &__thumbnail {
+        border: 2px solid transparent;
+        background-color: $white;
+        cursor: pointer;
+        width: $pswp-thumbnail-size;
+        height: $pswp-thumbnail-size;
+
+        &--active { 
+            border: 2px solid $primary;
+        }
+
+        &-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            aspect-ratio: 1;
+        }
+    }
+
+    &__counter {
+        color: var(--body-text-color);
+        text-shadow: none;
+    }
+
+    &__button--close {
+        svg {
+            position: absolute;
+            top: 32px;
+            right: 14px;
+        }
+    }
+
+    &__caption {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.75);
+        left: 50%;
+        transform: translate(-50%, 0);
+        padding: 0 15px;
+        min-width: max-content;
+        bottom: 2 * $pswp-ui-el-gap;
+
+        @media(max-width: 767.98px) {
+            bottom: $pswp-ui-el-gap;
+            min-width: 100%;
+        }
+    }
+}
